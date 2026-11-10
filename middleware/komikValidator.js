@@ -19,7 +19,7 @@ const idSchema = Joi.object({
     id: Joi.number().integer().positive().required(),
 });
 
-function validateKomik(schema) {
+function validateBody(schema) {
     return (req, res, next) => {
         const { error, value } = schema.validate(req.body, {
             abortEarly: false,
@@ -62,3 +62,5 @@ function validateParams(schema) {
         next();
     };
 }
+
+module.exports = {komikSchema, idSchema, validateBody, validateParams};
